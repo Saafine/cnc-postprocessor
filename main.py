@@ -26,7 +26,7 @@ class G:
 
 
 class Model:
-    url = 'http://meble.design/root/configurations/0202173.txt'
+    url = 'ADD CONFIGURATION LINK HERE'
     # used for order folder creation and setting order number
     temp_number = url.rsplit('/', 1)[-1]  # from end to first slash
     web_number = temp_number.rsplit('.', 1)[0]  # from start to full space
@@ -956,13 +956,6 @@ def generate_walls():
             # generate 2nd side
             f2 = open(Model.order_folder +'sciana/sciana_' + str(run_col + 1) + ' ' + wall_type1 + '_' + wall_type2 + '_2' + '.mpr', 'w')
             f2.write(cnc.Woodwop().ww_open(Model.wall[run_col].height, Model.wall[run_col].depth, Model.furniture_thickness))
-
-            # f2.write(cnc.Woodwop().ww_variables())
-            # if Model.wall[run_col].hasSockle:
-            #     f2.write(cnc.Woodwop().ww_variables_sockle())
-            #     f2.write(cnc.Woodwop().ww_milling_sockle(True))
-            # else:
-            #     f2.write(cnc.Woodwop().ww_milling())
 
             if Model.wall[run_col].backwall:
                 f2.write(cnc.Woodwop().ww_variables())
