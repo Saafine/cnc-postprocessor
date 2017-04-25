@@ -2,10 +2,10 @@ import fdb
 
 
 class G:
-    con = fdb.connect(dsn='baza/Baza.fdb', user='SYSDBA', password='masterkey')
+    con = fdb.connect(dsn='baza/Baza.fdb', user='SYSDBA', password='masterkey')  # standard firebird password
     cur = con.cursor()
 
-
+    
 def get_table_headers(table):  # returns all table headers (column names)
     INSERT = "select rdb$field_name from rdb$relation_fields where rdb$relation_name='"+table+"';"  # select all column names from table
     G.cur.execute(INSERT)
@@ -31,53 +31,8 @@ def get_row_values(table, key):  # returns all values from table with specified 
     G.con.commit()
     return INSERT_val
 
-
-# SELECT = 'create table aaa (a int not null primary key, b varchar(32));'  # creates table
-# cur.execute(SELECT)
-# con.commit()  # used for executing, for example to insert a table
-
-# SELECT = "select USER_NAME from ACL"
-# SELECT = "select * from ccc'"
-# cur.execute(SELECT)
-
-# cur.execute("insert into aaa values (3,'abc')")
-# con.commit()
-
-# SELECT = "select b from aaa where a='1'"  # works
-# SELECT = "select * from aaa"
-# cur.execute(SELECT)
-# print(cur.fetchone()[0])  # fetches first row only with 0 array element
-# print(cur.fetchone())  # fetches first row only
-# print(cur.fetchall())  # fetches whole result
-# cur.fetchall()[0][0] # fetches whole result, goes to 0 row and 0 column
-# con.commit()
-
-
-# INSERT_col = 'id_formatki, magazyn, id_plyty, opis, kod, dlugosc, szerokosc, grubosc, struktura, stan, stan_min, stan_max, priorytet, info_mod, info_dod, rys_tech_1, rezerwacja, rys_param, netto, brutto, vat, zw, nettod, netto1, netto2, bruttod, brutto1, brutto2, waluta, srednia_wazona, ID_OKLEINY_1, ID_OKLEINY_2, ID_OKLEINY_3, ID_OKLEINY4, opis_okleiny_1, opis_okleiny_2, opis_okleiny_3, opis_okleiny_4, id_f_zestawu, zp_sub_sufix, typ_formatki, grupa, symbol, cecha, netto_doplata_lakier, cecha_1, produkcja_sciezka, dlugosc_formula, szerokosc_formula, ilosc_formula, cnc_plik_szablon, cnc_plik_szablon, drillbarcode, drillbarcode2, kolejnosc_oklejania, drillcode, drillcode2, struktura_typ'
-# INSERT_val = "'test1', '0', 'OJ252114199146EY2038', 'test opis', '123', '500', '500', '5', '0', '0', '0', '0', '0', 'NNNN', 'test_info', 'test_dod', 'rysdod1', '0', ' ', '0', '0', '0', '0','0','0','0','0','0','0',' ','0', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', '1', 'DRZWI', 'symboltest', 'MDF8', '0', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ','0', ' ', ' ','0'"
-#
-# INSERT = 'insert into '+INSERT_TABLE+' ('+INSERT_col+') values ('+INSERT_val+')'
-# INSERT = "insert into aaa (A, B) values ('4', 'cde')"
-
-
-
 INSERT_TABLE = 'formatki'
 get_columns = get_table_headers('FORMATKI')
-# get_values = get_row_values('FORMATKI', '5441')
-# INSERT = 'insert into ' + INSERT_TABLE+' ('+get_columns+') values ('+get_values+')'
-# print(', '.join(get_columns))  # turn a list to string and seperates elements with comma
-# print(get_columns)
-# print(get_values)
-# G.cur.execute(INSERT)
-# G.con.commit()
-
-# prim_key = 17
-# opis = 'BN1-053'
-# dlugosc = '2000'
-# szerokosc = '500'
-# grubosc = '20'
-# symbol = 'BN7 053'
-# cecha = 'REG 053'
 
 element = {
     'prim_key': '18',
@@ -192,7 +147,6 @@ for i in range(len(temp_INSERT_val)):
     else:
         INSERT_val += "'"+str(temp_INSERT_val[i])+"',"
         INSERT_col += str(temp_INSERT_col[i]) + ", "
-
 
 INSERT_TABLE = 'formatki'
 INSERT = 'insert into ' + INSERT_TABLE+' ('+INSERT_col+') values ('+INSERT_val+')'
