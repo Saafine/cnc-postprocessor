@@ -20,12 +20,6 @@ def mirror(value):
                 return extract_number(value)
     else:  # for example -> 37
         return 'y-' + value
-# mirror('37')
-# mirror('y-37')
-# mirror('y/2')
-# mirror('(y-5)/2')
-# mirror('y/2+2.5-2.5')
-
 
 def drawer(depth):  # update for every sliders depth
     safe_space = 10
@@ -85,27 +79,3 @@ def material(furniture_thickness, texture):
             return texture, material_laminated, excess_paint
         else:
             return texture, material, excess_veener
-
-# def find_repetition(list1):
-#     list2 = []  # number of repeating values
-#     for element in range(len(list1)):
-#         count = 0
-#         for compare in range(len(list1)):
-#             if list1[element] == list1[compare]:  # check how many objects exist in a list (at least one)
-#                 count += 1
-#                 if count > 1:  # remove repeating instances
-#                     list1[compare] = ['XX']
-#         list2 += [count]
-#
-#
-#     lenlist = len(list1)
-#     cleanup = 0
-#     while cleanup < lenlist:  # clean up entire list
-#         if list1[cleanup] == ['XX']:
-#             del list1[cleanup]
-#             del list2[cleanup]
-#             lenlist -= 1
-#             cleanup -= 1
-#         cleanup += 1
-#
-#     return list1, list2, list3  # returns unique values with a group number
