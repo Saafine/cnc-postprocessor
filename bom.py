@@ -87,17 +87,6 @@ def excel_boards(furniture_thickness, texture, backwall_texture, wall, board, co
         for column in range(1, col_names):
             ws1.cell(row=row, column=column, value=door_info[column - 1])
         row += 1
-        # if door[run_door].doortype == 'drawer':
-        #     side_info = ['bok/bok szuflady', 2, door[run_door].drawer_side_depth+material_excess, door[run_door].drawer_side_height+material_excess, material3, texture, 'DS' + str(run_door + 1)]
-        #     for column in range(1, col_names):
-        #         ws1.cell(row=row, column=column, value=side_info[column - 1])
-        #         ws1.cell(row=row, column=column).fill = PatternFill("solid", fgColor="ffdfdf")
-        #     row += 1
-        #     side_info = ['przod/tyl szuflady', 2, door[run_door].drawer_front_width+material_excess, door[run_door].drawer_front_height+material_excess, material3, texture, 'DF' + str(run_door + 1)]
-        #     for column in range(1, col_names):
-        #         ws1.cell(row=row, column=column, value=side_info[column - 1])
-        #         ws1.cell(row=row, column=column).fill = PatternFill("solid", fgColor="ffdfdf")
-        #     row += 1
 
     # append sockle info to excel
     for run_sockle in range(len(sockle)):
